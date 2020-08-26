@@ -12,25 +12,22 @@ function MotorRun (Motot_ID: number, Motot_Speed: number) {
 if (Motot_ID == 0) {
         i2cbuf[0] = 0
         i2cbuf[1] = Motot_Speed >> 8
-        i2cbuf[2] = Motot_Speed
         serial.writeNumbers(i2cbuf)
+        i2cbuf[2] = Motot_Speed
         pins.i2cWriteBuffer(0x10, i2cbuf)
     }
     if (Motot_ID == 1) {
         i2cbuf[0] = 2
         i2cbuf[1] = Motot_Speed >> 8
         i2cbuf[2] = Motot_Speed
-        serial.writeNumbers(i2cbuf)
         pins.i2cWriteBuffer(0x10, i2cbuf)
     }
     if (Motot_ID == 2) {
         i2cbuf[0] = 0
         i2cbuf[1] = Motot_Speed >> 8
         i2cbuf[2] = Motot_Speed
-        serial.writeNumbers(i2cbuf)
         pins.i2cWriteBuffer(0x10, i2cbuf)
-        i2cbuf[0] = 2
-        serial.writeNumbers(i2cbuf)
+i2cbuf[0] = 2
         pins.i2cWriteBuffer(0x10, i2cbuf)
     }
 }
